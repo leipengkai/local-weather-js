@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+
+    <link rel="icon" href="images/icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Judson|Montserrat|Quando" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- CSS file -->
+
+
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-dark bg-inverse">
+        <a class="navbar-brand" href="#">
+            <img src="images/icon.png" width="40" height="30" class="d-inline-block align-top" alt=""> Weather Pandemonium
+        </a>
+
+
+        <button class="btn btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">About</button>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        <h4 class="modal-title" id="myModalLabel">Weather Pandemounium</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Because all the cool kids are doing it</h5>
+                        <h6>Looking at you bootcamps and FCC people :)</h6>
+
+                        <ul>
+                            <li><a href="https://v4-alpha.getbootstrap.com/">Bootstrap 4</a> + <a href="https://jquery.com/">jQuery</a> + <a href="https://daneden.github.io/animate.css/">animate.css</a></li>
+                            <li><a href="http://ipinfo.io/">ipinfo.io</a> (API for the IP)</li>
+                            <li><a href="https://openweathermap.org/">Open Weather</a> (API for the IP)</li>
+                            <li><a href="http://365icon.com/icon-styles/ethnic/classic2/">Flags Icon Set</a></li>
+                            <li><a href="http://www.123freeicons.com/tick-weather-icons/">Weather Icon Set</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="modal-footer">
+
+
+                        <div class="social">
+
+
+                            <a data-toggle="tooltip" data-placement="top" title="Twitter" href="https://twitter.com/krakencode?lang=en" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                            <a data-toggle="tooltip" data-placement="bottom" title="Github" href="https://github.com/alemesa1991" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Linkedin" href="https://www.linkedin.com/in/alejandro-mesa-suarez-604916a2?trk=nav_responsive_tab_profile_pic" target="_blank"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                            <a data-toggle="tooltip" data-placement="bottom" title="Codepen" href="https://codepen.io/alemesa1991/" target="_blank"><i class="fa fa-codepen fa-2x" aria-hidden="true"></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Medium" href="https://medium.com/@alejandro.mesa1991" target="_blank"><i class="fa fa-medium fa-2x" aria-hidden="true"></i></a>
+                            <a data-toggle="tooltip" data-placement="right" title="Coming soon (hopefully)"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="wrapper">
+
+
+
+        <!--  <span class="post"><a href="#" class="fun-hover">Weather Pandemonium</a></span>
+<br>-->
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+
+
+                <div class="main">
+                    <div class="geolocation">
+                        <div>
+
+
+                            <h6 id="region">Getting location... </h6>
+                            <img id="yourflag" src=""><br/>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="temperature">
+                        <div>
+                            <span>Temperature</span><br/>
+                            <button type="button" class="btn btn-primary" id="temp"></button>
+                            <p id="changetemp">Click to change to F°</p>
+                        </div>
+
+                    </div>
+
+                    <div class="others">
+
+                        <div>
+                            <span>Pressure</span><br/>
+                            <button data-toggle="tooltip" data-placement="bottom" title="1013.25 hPa = 1atm (sea level pressure)" type="button" class="btn btn-outline-primary" id="pressure"></button>
+                        </div>
+
+
+                    </div>
+                    <div class="latandlong">
+                        <div>
+
+                            <span>Latitude &amp; Longitude</span><br/>
+                            <button type="button" class="btn btn-outline-primary" id="latitude"></button>
+                        </div>
+
+                    </div>
+                    <div class="firstimage">
+                        <div>
+
+                        <img id="firsticon" src="" alt="">
+
+                        </div>
+
+                    </div>
+                    <div class="others">
+
+
+                        <div>
+                            <span>Humidity</span><br/>
+                            <button type="button" class="btn btn-outline-primary" id="humidity"></button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="div_more">
+
+                    <button type="button" id="more" class="btn btn-primary btn-sm">Get an specific city</button>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="search">
+
+            <button type="submit" class="btn btn-success" id="startsearch">Start search</button>
+            <input type="text" class="form-control" placeholder="Enter city name" aria-describedby="sizing-addon1" id="form_city">
+
+        </div>
+
+
+
+        <div class="newsearch">
+            <div>
+                <img src="" id="anothercountry">
+            </div>
+
+            <div>
+                <span>City, Country</span><br/>
+                <button type="button" class="btn btn-outline-danger" id="yourcity"></button>
+
+            </div>
+
+            <div>
+                <span>Temperature</span><br/>
+                <button type="button" class="btn btn-outline-primary" id="yourtemp"></button>
+
+            </div>
+
+            <div>
+
+                <img id="newicon" src="" />
+            </div>
+            <div>
+                <span>Forecast</span><br/>
+                <button type="button" class="btn btn-outline-success" id="yourforecast"></button>
+            </div>
+
+            <div>
+                <span>Pressure</span><br/>
+                <button type="button" class="btn btn-outline-warning" id="yourpressure"></button>
+            </div>
+            <div>
+                <span>Humidity</span><br/>
+                <button type="button" class="btn btn-outline-info" id="yourhumidity"></button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer>
+
+
+        <div>
+
+
+            <a href="https://twitter.com/krakencode" class="twitter-follow-button" data-show-count="true">Follow @krakencode</a>
+        </div>
+
+        <p id="twitter_footer">
+            Made with <i class="fa fa-heart" aria-hidden="true"></i> by Ale
+        </p>
+
+
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+    <script src="js/jquery.easy-autocomplete.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <!--  Twitter Script-->
+    <script>
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+
+
+
+</body>
+
+</html>
