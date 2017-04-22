@@ -134,6 +134,7 @@ $(document).ready(function() {
     //API KEY: ec83fdc708f434c54152ef547f1a4f8b
     //GEOLOCATION
     var location = "http://ipinfo.io";
+    
     var lat, long;
     var geolocation, city, region;
 
@@ -201,7 +202,7 @@ $(document).ready(function() {
 
         });
 
-    });
+    },"jsonp");
 
 
 

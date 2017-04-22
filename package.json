@@ -1,0 +1,16 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Simple Weather App",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Quench",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "2.6.5",
+    "gulp-plumber": "1.0.0",
+    "gulp": "3.8.11"
+  }
+}
