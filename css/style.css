@@ -1,8 +1,7 @@
 * {
-    font-family: 'Judson', serif;
-    box-sizing: border-box;
-    text-align: center;
-}
+  font-family: 'Judson', serif;
+  box-sizing: border-box;
+  text-align: center; }
 
 h1,
 h2,
@@ -10,169 +9,156 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Quando', serif;
-}
+  font-family: 'Quando', serif; }
 
 button,
 span {
-    font-family: 'Montserrat', sans-serif;
-}
+  font-family: 'Montserrat', sans-serif; }
 
 nav a {
-    font-family: 'Quando', sans-serif;
-}
+  font-family: 'Quando', sans-serif; }
 
 html {
-    overflow-x: hidden;
-    max-width: 100%;
-    max-height: 100%;
-}
+  overflow-x: hidden;
+  max-width: 100%;
+  max-height: 100%; }
 
 .modal-body ul li {
-    list-style-type: none;
-    text-decoration: none;
-}
+  list-style-type: none;
+  text-decoration: none; }
 
 .search {
-    display: inline-flex;
-    justify-content: center;
-}
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+  justify-content: center; }
 
 .main {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-around;
-}
-
-.main>* {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
+  .main > * {
+    -ms-flex: 1 30%;
     flex: 1 30%;
-    align-self: center;
-}
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center; }
 
 h4 {
-    font-weight: bold;
-}
-
-nav .btn {
-    float: right;
-}
+  font-weight: bold; }
 
 nav {
-    opacity: 1;
-}
+  opacity: 1; }
+  nav .btn {
+    float: right; }
 
 hr {
-    color: black;
-}
+  color: black; }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(to right, white 80%, grey);
-}
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to right, white 80%, grey); }
 
 .pac-item-query {
-    font-size: 110%;
-}
+  font-size: 110%; }
 
 .main button {
-    margin-bottom: 12px;
-}
+  margin-bottom: 12px; }
 
 .newsearch {
-    display: flex;
-    padding-top: 6px;
-    flex-flow: wrap;
-    justify-content: space-around;
-}
-
-.newsearch>* {
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 6px;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
+  .newsearch > * {
+    -ms-flex: 1 23%;
     flex: 1 23%;
-    align-self: center;
-}
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center; }
 
 .div_more {
-    padding-top: 15px;
-}
+  padding-top: 15px; }
 
 p {
-    font-weight: bold;
-}
+  font-weight: bold; }
 
 .main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-flow: wrap;
-}
-
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap; }
 
 /******   MODALS    ******/
-
 .fa-twitter {
-    color: #1da1f2;
-}
+  color: #1da1f2; }
 
 .fa-github {
-    color: #181717;
-}
+  color: #181717; }
 
 .fa-linkedin {
-    color: #0077b5;
-}
+  color: #0077b5; }
 
 .fa-codepen {
-    color: #000;
-}
+  color: #000; }
 
 .fa-medium {
-    color: #00ab6b;
-}
+  color: #00ab6b; }
 
 .fa-youtube {
-    color: #cd201f;
-}
+  color: #cd201f; }
 
 .fa-heart {
-    color: blue;
-}
+  color: blue; }
 
 .social {
-    display: flex;
-    justify-content: center;
-}
-
-.social>* {
-    padding-left: 6px;
-}
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .social > * {
+    padding-left: 6px; }
 
 .fa {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 .wrapper {
-    flex: 1;
-}
+  -ms-flex: 1;
+  flex: 1; }
 
 footer {
-    display: inline-flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-}
-
-footer p {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  footer p {
     padding-right: 20px;
-    align-self: center;
-}
-
-footer div {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center; }
+  footer div {
     padding-left: 20px;
-    align-self: center;
-}
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center; }
 
 #newicon,
 #firsticon {
-    width: 30%;
-    height: auto;
-}
+  width: 30%;
+  height: auto; }
