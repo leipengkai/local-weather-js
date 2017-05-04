@@ -4,13 +4,14 @@ Local Weather API Project
 Just a simple web app that displays the local weather depending on your IP and the ability to look for the weather depending on the city.
 
 Using the next technologies:
-<ul>
-                            <li><a href="https://v4-alpha.getbootstrap.com/">Bootstrap 4</a> + <a href="https://jquery.com/">jQuery</a> + <a href="https://daneden.github.io/animate.css/">animate.css</a></li>
-                            <li><a href="http://ipinfo.io/">ipinfo.io</a> (API for the IP)</li>
-                            <li><a href="https://openweathermap.org/">Open Weather</a> (API for the IP)</li>
-                            <li><a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete">Google Maps</a> (API for cities autocomplete)</li>
-                            <li><a href="http://365icon.com/icon-styles/ethnic/classic2/">Flags Icon Set</a></li>
-                            <li><a href="http://www.123freeicons.com/tick-weather-icons/">Weather Icon Set</a> Designed by<a href="http://www.freepik.com"> Freepik</a></li>
-                        </ul>
+* [Bootstrap 4](https://v4-alpha.getbootstrap.com/) which contains dependencies to jQuery + Tether
+* [Animate](https://daneden.github.io/animate.css/) for animations
+* [ipinfo.ip](http://ipinfo.io/) - To get IP * doesn't work with some Ad Blockers
+* [Open Weather](https://openweathermap.org/) - To work with the weather data (free API)
+* [Google Maps](https://developers.google.com/maps/documentation/javascript/places-autocomplete) -  Autocomplete for cities
+* [Flags Icons Set](http://365icon.com/icon-styles/ethnic/classic2/)
+* [Weather Icons](http://www.123freeicons.com/tick-weather-icons/)
 
-![App Working](http://i.imgur.com/F8NHJh0.gif "App")
+Betwen commit [#11](https://github.com/alemesa1991/Local-Weather-API/commit/39a3750a26256bffdf41b5eb716d7b63bdef8a6b) and [#12](https://github.com/alemesa1991/Local-Weather-API/commit/a01a5959d85c37a29eac5522ffba989604a77618) I refactored my code from jQuery to ES6 Javascript & axios. Page loaded 38% faster.
+
+![App Working](http://i.imgur.com/8JJR0Cy.gif "App")

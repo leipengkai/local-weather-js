@@ -71,7 +71,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: linear-gradient(to right, white 80%, grey);
+    //background: linear-gradient(to right, white 80%, grey);
+    background: url("../images/pattern.png") repeat; 
 }
 
 .pac-item-query {
@@ -83,12 +84,14 @@ body {
 }
 
 .newsearch {
+    color:white;
     display: flex;
     padding-top: 2rem;
     flex-flow: wrap;
     justify-content: space-around;
 
     >* {
+    margin-bottom: 15px;
     flex: 1 23%;
     align-self: center;
 }

@@ -64,7 +64,7 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(to right, white 80%, grey); }
+  background: url("../images/pattern.png") repeat; }
 
 .pac-item-query {
   font-size: 110%; }
@@ -73,6 +73,7 @@ body {
   margin-bottom: 12px; }
 
 .newsearch {
+  color: white;
   display: -ms-flexbox;
   display: flex;
   padding-top: 2rem;
@@ -81,6 +82,7 @@ body {
   -ms-flex-pack: distribute;
   justify-content: space-around; }
   .newsearch > * {
+    margin-bottom: 15px;
     -ms-flex: 1 23%;
     flex: 1 23%;
     -ms-flex-item-align: center;
