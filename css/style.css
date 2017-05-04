@@ -75,7 +75,7 @@ body {
 .newsearch {
   display: -ms-flexbox;
   display: flex;
-  padding-top: 6px;
+  padding-top: 2rem;
   -ms-flex-flow: wrap;
   flex-flow: wrap;
   -ms-flex-pack: distribute;

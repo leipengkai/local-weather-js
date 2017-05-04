@@ -1,5 +1,6 @@
-//jQuery Document Ready
-$(document).ready(function() {
+
+document.addEventListener('DOMContentLoaded', function(){
+
 
     //Autocomplete using Google Maps Api
     const input = document.getElementById('form_city');
@@ -95,58 +96,83 @@ $(document).ready(function() {
     }
 
     //Clicking for more info
-    $("#more").click(function() {
-        $(".div_more").hide();
-        $(".search").show().addClass("animated bounceInRight");
+    const moreInfoButton = document.getElementById('more');
+    const moreInfoContainer = document.querySelector(".div_more");
+    const searchBar = document.querySelector('.search');
+    const newSearchBar = document.querySelector('.newsearch');
+
+    moreInfoButton.addEventListener('click', function() {
+        moreInfoContainer.style.display = 'none';
+        searchBar.style.display = '';
+        searchBar.classList.add("animated","bounceInRight");
     });
 
     //Hide elements from the beginning
-    $(".search").hide();
-    $(".newsearch").hide();
-
+    searchBar.style.display = 'none';
+    newSearchBar.style.display = 'none';
 
     //Animations
-    $(".social a, button").hover(
-        function() {
-            $(this).addClass("animated pulse");
-        },
-        function() {
-            $(this).removeClass("animated pulse");
-        }
-    );
+    const socialIcons = document.querySelectorAll('.social a');
+    const allButtons = document.querySelectorAll('button');
+    
+    socialIcons.forEach(icon => icon.addEventListener('mouseover',function(){
+        icon.classList.add('animated','pulse');
+    }));
+    socialIcons.forEach(icon => icon.addEventListener('mouseout',function(){
+        icon.classList.remove('animated','pulse');
+    }));
+    allButtons.forEach(button => button.addEventListener('mouseover',function(){
+        button.classList.add('animated','pulse');
+    }));
+    allButtons.forEach(button => button.addEventListener('mouseout',function(){
+        button.classList.remove('animated','pulse');
+    }));
 
-    //Initialize tooltips
+    //Initialize tooltips for Bootstrap this requires jQuery sadly :(
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
+    const startSearch = document.getElementById('startsearch');
+    const cityInput = document.getElementById('form_city');
+ 
     //Enter key function when enter
-    $("#form_city").keyup(function(event) {
-        if (event.keyCode == 13) {
-            $("#startsearch").click();
-            $(".newsearch").show().addClass("animated bounceInLeft");
-
-        }
+    document.addEventListener('keypress',function(e){
+    if(e.key == "Enter" && cityInput.value !== ''){
+        startSearch.click();
+        newSearchBar.style.display = '';
+        newSearchBar.classList.add("animated" ,"bounceInRight");
+    }
     });
 
-
+  
     //API Functionality
     //API KEY: ec83fdc708f434c54152ef547f1a4f8b
     //GEOLOCATION
-    var location = "http://ipinfo.io";
+    let location = "http://ipinfo.io";
     
-    var lat, long;
-    var geolocation, city, region;
+    let lat, long;
+    let geolocation, city, region;
 
+/*
+    axios.get(location)
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+*/
     //Pull your location
-    $.getJSON(location, function(data1) {
-
-        geolocation = data1.loc.split(',');
-        var city = data1.city;
-        var region = data1.region;
-        var lat = geolocation[0];
-        var long = geolocation[1];
-        var country = data1.country.toLowerCase();
+    axios.get(location)
+    .then(function(response) {
+        console.log(response);
+        geolocation = response.data.loc.split(',');
+        let city = response.data.city;
+        let region = response.data.region;
+        let lat = geolocation[0];
+        let long = geolocation[1];
+        let country = response.data.country.toLowerCase();
 
 
         $("#latitude").html(lat + " , " + long);
@@ -154,110 +180,130 @@ $(document).ready(function() {
         $("#region").html(city + ", " + region);
         console.log(country);
 
-        var flag = 'images/48/' + country + '.png';
+        let flag = 'images/48/' + country + '.png';
 
         //var flag =  'https://flagpedia.net/data/flags/normal/' +        country + '.png';
 
         $("#yourflag").attr('src', flag);
 
         //WEATHER
-        var api = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=ec83fdc708f434c54152ef547f1a4f8b";
+        let api = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=ec83fdc708f434c54152ef547f1a4f8b";
 
 
 
+        
 
-
-        $.getJSON(api, function(data2) {
+        axios.get(api)
+        .then(function (response) {
 
             //Celsius
-            var cTemp = (data2.main.temp - 273).toFixed(0);
-            var fTemp = (cTemp * 9 / 5 + 32).toFixed(0);
-            var pressure = data2.main.pressure;
-            var humidity = data2.main.humidity;
-            var desc = data2.weather.id;
-            var toggletemp = true;
+            let cTemp = (response.data.main.temp - 273).toFixed(0);
+            let fTemp = (cTemp * 9 / 5 + 32).toFixed(0);
+            let pressure = response.data.main.pressure;
+            let humidity = response.data.main.humidity;
+            let desc = response.data.weather.id;
+            let toggletemp = true;
 
-            $("#temp").html(cTemp + " C°");
+            const temp = document.getElementById('temp');
+            const changeTemp = document.getElementById('changetemp');
+            temp.innerHTML = cTemp + " C°";
 
-            $("#temp").click(function() {
+            temp.addEventListener("click", function() {
 
                 if (toggletemp) {
-                    $("#temp").html(fTemp + " F°");
+                    temp.innerHTML = fTemp + " F°";
                     toggletemp = false;
-                    $("#changetemp").html("Click to change to C°");
+                    changeTemp.innerHTML = "Click to change to C°";
                 } else {
-
-                    $("#temp").html(cTemp + " C°");
+                    temp.innerHTML = cTemp + " C°";
                     toggletemp = true;
-                    $("#changetemp").html("Click to change to F°");
-
+                    changeTemp.innerHTML = "Click to change to F°";
                 }
 
             });
 
-            var final_icon = getIcon(data2.weather[0].icon.charAt(2), data2.weather[0].id);
-            $("#firsticon").attr("src", "images/weather/" + final_icon);
-            $("#pressure").html(pressure + " hPa");
-            $("#humidity").html(humidity + "%");
+            var final_icon = getIcon(response.data.weather[0].icon.charAt(2), response.data.weather[0].id);
+            const firstIcon = document.getElementById('firsticon');
+            const pressureH = document.getElementById('pressure');
+            const humidityH = document.getElementById('humidity');
 
+            firstIcon.setAttribute('src', "images/weather/" + final_icon);
+            pressureH.innerHTML = pressure + " hPa";
+            humidityH.innerHTML = humidity + "%";
+
+        })
+        .catch(function (error) {
+            console.log(error);
         });
 
-    },"jsonp");
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 
 
 
     //SEARCH FUNCTIONALITY
-    $("#startsearch").click(function() {
+    startSearch.addEventListener('click',function() {
 
-        $(".newsearch").show().addClass("animated bounceInLeft");
+        newSearchBar.style.display = '';
+        newSearchBar.classList.add('animated','bounceInLeft');
 
-        var searchvalue = $("input:text").val();
-        var api2 = "http://api.openweathermap.org/data/2.5/weather?q=" + searchvalue + "&appid=ec83fdc708f434c54152ef547f1a4f8b";
-
-
-
-        $.getJSON(api2, function(data3) {
-
-            var yourcity = data3.name;
-            var yourcountry = data3.sys.country.toLowerCase();
-            var yourtemp = (data3.main.temp - 273).toFixed(0);
-            var yourforecast = data3.weather[0].description;
-            var icon = data3.weather[0].icon;
-            var extraflag = 'images/48/' + yourcountry + '.png';
-            var getid = data3.weather[0].id;
-            var dayornight = data3.weather[0].icon.charAt(2);
-            var finalicon = getIcon(dayornight, getid);
+        let searchvalue = document.getElementById('form_city').value;
+        console.log(searchvalue);
+        let api2 = "http://api.openweathermap.org/data/2.5/weather?q=" + searchvalue + "&appid=ec83fdc708f434c54152ef547f1a4f8b";
 
 
+    axios.get(api2)
+        .then(function (response) {
+
+            let yourcity = response.data.name;
+            let yourcountry = response.data.sys.country.toLowerCase();
+            let yourtemp = (response.data.main.temp - 273).toFixed(0);
+            let yourforecast = response.data.weather[0].description;
+            let icon = response.data.weather[0].icon;
+            let extraflag = 'images/48/' + yourcountry + '.png';
+            let getid = response.data.weather[0].id;
+            let dayornight = response.data.weather[0].icon.charAt(2);
+            let finalicon = getIcon(dayornight, getid);
+
+            const secondIcon = document.getElementById('anothercountry');
+            const cityH = document.getElementById('yourcity');
+            const tempH = document.getElementById('yourtemp');
+
+            secondIcon.setAttribute('src', extraflag);
+            cityH.innerHTML = yourcity + " , " + yourcountry.toUpperCase();
+            tempH.innerHTML = yourtemp + " C°";
+
+            let toggletemp2 = true;
 
 
-            $("#anothercountry").attr('src', extraflag);
-            $("#yourcity").html(yourcity + " , " + yourcountry.toUpperCase());
-            $("#yourtemp").html(yourtemp + " C°");
-
-            var toggletemp2 = true;
-
-
-
-
-            $("#yourtemp").click(function() {
+            yourTemp = document.getElementById('yourtemp');
+            yourTemp.addEventListener('click', function() {
 
                 if (toggletemp2) {
-                    $("#yourtemp").html((yourtemp * 9 / 5 + 32).toFixed(0) + " F°");
+                    yourTemp.innerHTML = (yourtemp * 9 / 5 + 32).toFixed(0) + " F°";
                     toggletemp2 = false;
                 } else {
-                    $("#yourtemp").html(yourtemp + " C°");
+                    yourTemp.innerHTML = yourtemp + " C°";
                     toggletemp2 = true;
                 }
 
             });
 
+            let yourForecast = document.getElementById('yourforecast');
+            let yourPressure = document.getElementById('yourpressure');
+            let yourHumidity = document.getElementById('yourhumidity');
+            let newIcon = document.getElementById('newicon');
 
-            $("#yourforecast").html(yourforecast);
-            $("#yourpressure").html(data3.main.pressure + " hPa");
-            $("#yourhumidity").html(data3.main.humidity + "%");
-            $("#newicon").attr("src", "images/weather/" + finalicon);
+            yourForecast.innerHTML = yourforecast;
+            yourPressure.innerHTML = response.data.main.pressure + " hPa";
+            yourHumidity.innerHTML = response.data.main.humidity + "%";
+            newIcon.setAttribute('src', "images/weather/" + finalicon);
 
+        })
+        .catch(function (error) {
+            console.log(error);
         });
 
     });
