@@ -4,6 +4,7 @@ var plumber = require('gulp-plumber');
 var babel = require('gulp-babel');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
+var surge = require('gulp-surge')
 
 gulp.task('css', function () {
     return gulp.src('./css/*.scss')
@@ -43,6 +44,13 @@ gulp.task('serve', function() {
         }
     });
     gulp.watch('*.html').on('change', browserSync.reload);
+});
+
+gulp.task('deploy',function () {
+  return surge({
+    project: '.',         // Path to your static build directory
+    domain: 'weather-javascript.surge.sh'  // Your domain or Surge subdomain
+  });
 });
 
 gulp.task('default', ['css','watch','serve','js']);
