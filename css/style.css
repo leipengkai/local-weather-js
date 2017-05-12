@@ -164,3 +164,27 @@ footer {
 #firsticon {
   width: 30%;
   height: auto; }
+
+@media screen and (max-width: 540px) {
+  #newicon,
+  #firsticon {
+    width: 70%;
+    height: auto; }
+  .main {
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .main > * {
+      -ms-flex: 1 1 80%;
+      flex: 1 1 80%;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; }
+  .newsearch {
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .newsearch > * {
+      -ms-flex: 1 1 80%;
+      flex: 1 1 80%;
+      -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; } }

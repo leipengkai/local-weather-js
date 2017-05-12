@@ -185,3 +185,29 @@ footer {
     width: 30%;
     height: auto;
 }
+
+
+@media screen and (max-width:540px) {
+
+#newicon,
+#firsticon {
+    width: 70%;
+    height: auto;
+}
+.main {
+    flex-direction:column;
+    >* {
+    flex: 1 1 80%;
+    align-self: center;
+    }
+}
+
+.newsearch{
+    flex-direction:column;
+    >* {
+    flex: 1 1 80%;
+    align-self: center;
+    }
+}
+
+}
