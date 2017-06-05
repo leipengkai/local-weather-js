@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //API Functionality
     //API KEY: ec83fdc708f434c54152ef547f1a4f8b
     //GEOLOCATION
-    var location = "http://ipinfo.io";
+    var location = "https://ipinfo.io/json";
 
     var lat = void 0,
         long = void 0;

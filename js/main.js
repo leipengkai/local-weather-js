@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //API Functionality
     //API KEY: ec83fdc708f434c54152ef547f1a4f8b
     //GEOLOCATION
-    let location = "http://ipinfo.io";
+    let location = "https://ipinfo.io/json";
     
     let lat, long;
     let geolocation, city, region;
